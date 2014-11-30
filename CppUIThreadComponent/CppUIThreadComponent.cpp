@@ -31,10 +31,19 @@ void WindowsPhoneRuntimeComponent::DoUIThreadTest()
 {
 	ThreadPool::RunAsync(ref new WorkItemHandler([](IAsyncAction^) 
 	{
+#if 0
 		// Right now we are on the thread pool, not the UI Thread
 		// Because we're not on the UI thread the following code will raise an exception
-#if 0
 		CurrentApp::RequestProductPurchaseAsync(ref new String(L"test"), false);
+#elif 0
+		// If this were a Direct3D App we would be able to use the CoreWindow dispatcher to access the UI thread
+		// But from a WinRT component the CoreWindow won't be available
+		auto window = Windows::UI::Core::CoreWindow::GetForCurrentThread();
+		window->Dispatcher->RunAsync(Windows::UI::Core::CoreDispatcherPriority::Normal,
+			ref new Windows::UI::Core::DispatchedHandler([]()
+		{
+			CurrentApp::RequestProductPurchaseAsync(ref new String(L"test"), false);
+		}));
 #else
 		MyUIDispatchActivity* pActivity = new MyUIDispatchActivity();
 		GetNativeDispatcher()->EnqueueUIDispatchActivity(pActivity);
