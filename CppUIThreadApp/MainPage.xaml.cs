@@ -28,10 +28,11 @@ namespace CppUIThreadApp
             _nativeDispatcher.SetDequeueDelegate(DequeueUIDispatchActivity);
         }
 
-        public void DequeueUIDispatchActivity()
+        public void DequeueUIDispatchActivity(string activityName)
         {
             Dispatcher.BeginInvoke(() =>
             {
+                lbActivities.Items.Add("Dispatcher Invoking Activity on UI Thread:\n\t" + activityName);
                 _nativeDispatcher.DequeueUIDispatchActivity();
             });
         }

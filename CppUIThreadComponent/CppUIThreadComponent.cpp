@@ -14,12 +14,17 @@ using namespace Windows::ApplicationModel::Store;
 
 class MyUIDispatchActivity : public UIDispatchActivity
 {
-	void DoActivity()
+	void DoActivity() override
 	{
 		// Now we are back on the UI thread! Let's try that purchase
 		CurrentApp::RequestProductPurchaseAsync(ref new String(L"test"), false);
 		// you should see an error popup on your phone
 		// but that's okay you successfully attempted a store purchase from the UI thread!
+	};
+
+	Platform::String^ Name() override
+	{
+		return ref new Platform::String(L"MyUIDispatchActivity");
 	};
 };
 

@@ -9,9 +9,10 @@ namespace CppUIThreadComponent
 	{
 	public:
 		virtual void DoActivity() = 0;
+		virtual Platform::String^ Name() = 0;
 	};
 
-	public delegate void DequeueActivity();
+	public delegate void DequeueActivity(Platform::String^ sName);
  
 	public ref class ComponentDispatcher sealed
 	{

@@ -25,6 +25,6 @@ namespace CppUIThreadComponent
 	void ComponentDispatcher::EnqueueUIDispatchActivity(UIDispatchActivity* pActivity)
 	{
 		m_qDispatch.push(pActivity);
-		m_delegate->Invoke();
+		m_delegate->Invoke(pActivity->Name());
 	}
 }
