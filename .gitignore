@@ -32,3 +32,6 @@ CppUIThreadApp/Bin/x86/Debug/Assets/ApplicationIcon.png
 CppUIThreadApp/Bin/x86/Debug/Assets/Tiles/FlipCycleTileLarge.png
 CppUIThreadApp/Bin/x86/Debug/Assets/Tiles/FlipCycleTileMedium.png
 CppUIThreadApp/Bin/x86/Debug/Assets/Tiles/FlipCycleTileSmall.png
+*.user
+ipch/cppuithreadcomponent-1fbb7132/cppuithreadcomponent-b8256ff8.ipch
+Debug/CppUIThreadComponent/CppUIThreadComponent.lib

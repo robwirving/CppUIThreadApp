@@ -5,15 +5,15 @@
 
 namespace CppUIThreadComponent
 {
-	class UIDispatchActivity
+	public delegate void DequeueActivity(Platform::String^ sName);
+
+	class UIDispatchActivity abstract
 	{
 	public:
 		virtual void DoActivity() = 0;
 		virtual Platform::String^ Name() = 0;
 	};
 
-	public delegate void DequeueActivity(Platform::String^ sName);
- 
 	public ref class ComponentDispatcher sealed
 	{
 	public:
